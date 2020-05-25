@@ -17,16 +17,18 @@ defmodule Advent2019Day1 do
     |> Enum.sum()
   end
 
-  def part_one do
+  def solve(fueling_fn) do
     get_data()
-    |> Enum.map( fn x -> fuel_needed(x) end)
+    |> Enum.map( fn x -> fueling_fn.(x) end)
     |> Enum.sum()
   end
 
+  def part_one do
+    solve(&Advent2019Day1.fuel_needed/1)
+  end
+
   def part_two do
-    get_data()
-    |> Enum.map( fn x -> fuel_with_additional_fuels(x) end)
-    |> Enum.sum()
+    solve(&Advent2019Day1.fuel_with_additional_fuels/1)
   end
 end
 

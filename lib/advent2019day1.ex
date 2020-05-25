@@ -1,13 +1,13 @@
 defmodule Advent2019Day1 do
-  def fuel_needed(x) do
-    Float.floor(x / 3) - 2
-  end
-
   def get_data do
     {:ok, file} = File.open("./lib/day1data", [:read])
     IO.read(file, :all) 
     |> String.split("\n")
     |> Enum.map(&String.to_integer/1)
+  end
+
+  def fuel_needed(x) do
+    Float.floor(x / 3) - 2
   end
 
   def fuel_with_additional_fuels(mass) do

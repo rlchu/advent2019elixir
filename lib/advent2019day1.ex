@@ -11,7 +11,8 @@ defmodule Advent2019Day1 do
   end
 
   def fuel_with_additional_fuels(mass) do
-    Stream.iterate(mass, &(fuel_needed(&1))) 
+    #need to start iteration on a call to fuel_needed(mass) first
+    Stream.iterate(fuel_needed(mass), &(fuel_needed(&1))) 
     |> Stream.take_while(&(&1 > 0))
     |> Enum.sum()
   end
